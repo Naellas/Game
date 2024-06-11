@@ -3,6 +3,12 @@ from character import Character, Companion
 from item import Item, items
 from utilities import display_map, generate_cities, generate_bosses, hire_companion
 from encounter import encounter
+from gui import RPGGameGUI
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = RPGGameGUI(root)
+    root.mainloop()
 
 def main():
     name = input("Enter your character's name: ")
@@ -80,11 +86,12 @@ def main():
                 player.move(direction, map_size)
                 if(random.randint(1,100)+ max(abs(player.position[0] - map_size // 2), abs(player.position[1] - map_size // 2))>50):
                     encounter(player, map_size)
-                elif direction == "i":
-                    item_name = input("Enter the name of the item to equip: ")
-                    player.equip_item(item_name)
-                else:
-                    print("Invalid action!")
+                    #Random encounter ends
+            elif direction == "i":
+                item_name = input("Enter the name of the item to equip: ")
+                player.equip_item(item_name)
+            else:
+                print("Invalid action!")
 
     print(f"{player.name} has been defeated. Game over!")
 
