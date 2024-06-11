@@ -15,11 +15,11 @@ def encounter(character, map_size):
         ("Witch", "Hex"),
         ("Demon", "Hellfire")
     ]
+    distance_from_center = max(abs(character.position[0] - map_size // 2), abs(character.position[1] - map_size // 2))
     num_enemies = random.randint(1, 3)
     enemies = []
     for _ in range(num_enemies):
         enemy_name, enemy_ability = random.choice(possible_enemies)
-        distance_from_center = max(abs(character.position[0] - map_size // 2), abs(character.position[1] - map_size // 2))
         enemy_level = max(1, distance_from_center // 2 + random.randint(-1, 1), character.level)
         enemy_health = enemy_level * 30
         enemies.append(Enemy(f"{enemy_name} Lvl {enemy_level}", enemy_level, enemy_health, enemy_ability))

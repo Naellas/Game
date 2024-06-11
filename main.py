@@ -78,12 +78,13 @@ def main():
             direction = input("Move (n)orth, (s)outh, (e)ast, (w)est or (i)nventory: ").lower()
             if direction in ["n", "s", "e", "w"]:
                 player.move(direction, map_size)
-                encounter(player, map_size)
-            elif direction == "i":
-                item_name = input("Enter the name of the item to equip: ")
-                player.equip_item(item_name)
-            else:
-                print("Invalid action!")
+                if(random.randint(1,100)+ max(abs(player.position[0] - map_size // 2), abs(player.position[1] - map_size // 2))>50):
+                    encounter(player, map_size)
+                elif direction == "i":
+                    item_name = input("Enter the name of the item to equip: ")
+                    player.equip_item(item_name)
+                else:
+                    print("Invalid action!")
 
     print(f"{player.name} has been defeated. Game over!")
 
