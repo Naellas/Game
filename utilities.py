@@ -43,9 +43,9 @@ def generate_bosses(num_bosses, map_size):
 def hire_companion():
     print("Available companions:")
     companions = [
-        Companion("Aragorn", "warrior"),
-        Companion("Gandalf", "mage"),
-        Companion("Legolas", "rogue")
+        Companion("Bogdan", "warrior"),
+        Companion("Krysia", "mage"),
+        Companion("Kasztan", "rogue")
     ]
     for i, companion in enumerate(companions):
         print(f"{i + 1}. {companion.name} - {companion.char_class.capitalize()} - Cost: 50 gold")
